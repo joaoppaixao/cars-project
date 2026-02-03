@@ -1,10 +1,10 @@
 from django.shortcuts import render, redirect
 from cars.models import Car
-from cars.forms import CarForm
+from cars.forms import CarModelForm
 
 
 def cars_view(request):
-    cars = Car.objects.all().order_by('model')
+    cars = Car.objects.all().order_by('brand')
     search  = request.GET.get('search')
 
     if search:
@@ -19,14 +19,14 @@ def cars_view(request):
 
 def new_car_view(request):
     if request.method == 'POST':
-        new_car_form = CarForm(request.POST, request.FILES)
+        new_car_form = CarModelForm(request.POST, request.FILES)
         if new_car_form.is_valid():
             new_car_form.save()
             return redirect('cars_list')
         else:
             print('[Erro]: não foi possível cadastrar o seu carro. ')
     else:
-        new_car_form = CarForm()
+        new_car_form = CarModelForm()
 
     return render(request, 
                 'new_car.html',
