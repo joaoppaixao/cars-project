@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <form method="post">
+        {% csrf_token %}
+
+        <table>
+            {{ login_form.as_table }}
+        </table>
+
+        <ul>
+            <li><a href="{% url 'register' %}">Não tem uma conta? Clique aqui para se registrar. </a></li>
+        </ul>
+
+        <input type="submit" value="Entrar">
+    </form>
+{% endblock %}
