@@ -13,5 +13,5 @@ urlpatterns = [
     path('logout/', logout_view, name='logout'),
     path('cars/', CarsListView.as_view(), name='cars_list'),
     path('new_car/', NewCarCreateView.as_view(), name='new_car'),
-    path('cars/<int:pk>/', CarDetailView.as_view(), name='car_detail')
+    path('car/<int:pk>/', CarDetailView.as_view(), name='car_detail')
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
