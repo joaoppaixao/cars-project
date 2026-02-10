@@ -94,4 +94,9 @@
       <p><strong>Bio:</strong> {{ object.bio }}</p>
     {% endif %}
   </div>
+  {% if user.is_authenticated %}
+    <div class="buttons-container">
+      <a href="{% url 'car_update' pk=object.pk %}" class="btn btn-primary">Editar</a>
+    </div>
+  {% endif %}
 {% endblock %}
